@@ -17,12 +17,13 @@ jobs:
         run: npm install
 
       - name: Compilar instalador
-        run: npm run dist
+        run: npx electron-builder --win nsis x64 --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
+          USE_HARD_LINKS: false
 
       - name: Publicar EXE
         uses: actions/upload-artifact@v5
         with:
           name: CopaNavidad-Instalador-Windows
-          path: dist-instalador/*.exe
+          path: dist-instalador/**/*.exe
