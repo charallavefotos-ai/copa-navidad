@@ -1,4 +1,4 @@
-name: Generar APK Android Torneo
+name: Generar APK Android
 on: [push, workflow_dispatch]
 
 jobs:
