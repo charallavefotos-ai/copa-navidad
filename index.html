@@ -1,0 +1,1503 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Torneo Copa Navidad - Club Mirador (App Offline PRO)</title>
+
+    <!-- PWA Mobile & Desktop Settings -->
+    <meta name="theme-color" content="#1e1b4b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Copa Navidad">
+
+    <!-- SVG App Icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'%3E%3Cpath d='M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c2.12-.39 3.75-2.02 4.61-4.14C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'%3E%3Cpath d='M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c2.12-.39 3.75-2.02 4.61-4.14C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z'/%3E%3C/svg%3E">
+
+    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Torneo%20Copa%20Navidad%20-%20Club%20Mirador%22%2C%22short_name%22%3A%22Copa%20Navidad%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231e1b4b%22%2C%22theme_color%22%3A%22%231e1b4b%22%2C%22description%22%3A%22Gestor%20Oficial%20de%20Bolas%20Criollas%20para%20el%20Torneo%20Copa%20Navidad%20Club%20Mirador%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Bcharset%3Dutf-8%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27%2523f59e0b%27%253E%253Cpath%20d%3D%27M19%205h-2V3H7v2H5c-1.1%200-2%20.9-2%202v1c0%202.55%201.92%204.63%204.39%204.94A5.01%205.01%200%200%200%2011%2015.9V18H8v2h8v-2h-3v-2.1c2.12-.39%203.75-2.02%204.61-4.14C19.08%2011.63%2021%209.55%2021%207V5c0-1.1-.9-2-2-2zM5%208V7h2v3.82C5.84%2010.4%205%209.3%205%208zm14%200c0%201.3-.84%202.4-2%202.82V7h2v1z%27%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%20512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+
+    <style>
+        :root {
+            --primary: #1e1b4b; --primary-light: #312e81; --secondary: #0284c7;
+            --accent: #f59e0b; --bg-main: #f8fafc; --card-bg: #ffffff;
+            --text-main: #0f172a; --text-muted: #64748b; --border-color: #e2e8f0;
+            --success: #059669; --danger: #dc2626; --radius-lg: 14px; --radius-md: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: var(--font-family); background-color: var(--bg-main); color: var(--text-main); line-height: 1.5; padding: 0.75rem; user-select: none; }
+        .container { max-width: 1280px; margin: 0 auto; }
+
+        header { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: white; padding: 1.25rem 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 1rem; }
+        @media (min-width: 768px) { header { flex-direction: row; justify-content: space-between; align-items: center; } }
+        .header-title-box { display: flex; align-items: center; gap: 0.85rem; }
+        .header-title-box h1 { font-size: 1.35rem; font-weight: 800; color: #ffffff; }
+        .header-title-box p { font-size: 0.825rem; color: #cbd5e1; }
+        .pwa-badge { display: inline-block; background-color: rgba(245,158,11,.2); color: #fbbf24; border: 1px solid rgba(245,158,11,.4); font-size: 0.675rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; margin-left: 6px; }
+        .header-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.6rem 1.1rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-md); border: none; cursor: pointer; transition: all 0.2s ease; text-decoration: none; min-height: 42px; }
+        .btn:active { transform: scale(0.97); }
+        .btn-success { background-color: var(--success); color: white; } .btn-success:hover { background-color: #047857; }
+        .btn-danger { background-color: var(--danger); color: white; } .btn-danger:hover { background-color: #b91c1c; }
+        .btn-secondary { background-color: #334155; color: white; } .btn-secondary:hover { background-color: #1e293b; }
+        .btn-primary { background-color: var(--secondary); color: white; } .btn-primary:hover { background-color: #0369a1; }
+        .btn-accent { background-color: var(--accent); color: #0f172a; } .btn-accent:hover { background-color: #d97706; color: white; }
+        .btn-pdf { background-color: #be123c; color: white; } .btn-pdf:hover { background-color: #9f1239; }
+        .btn-install { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; }
+
+        /* ===== BANNERS ===== */
+        .banner-carousel { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 1rem; height: 215px; background: #1e1b4b; }
+        .banner-slides { display: flex; height: 100%; width: 400%; transition: transform .6s cubic-bezier(.4,0,.2,1); }
+        .banner-slide { width: 25%; height: 100%; }
+        .banner-slide svg { width: 100%; height: 100%; display: block; }
+        .banner-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); color: #fff; font-size: 1.4rem; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: background .2s; z-index: 5; }
+        .banner-btn:hover { background: rgba(255,255,255,.35); }
+        .banner-btn.prev { left: 10px; } .banner-btn.next { right: 10px; }
+        .banner-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 5; }
+        .banner-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.4); border: none; cursor: pointer; padding: 0; transition: all .2s; }
+        .banner-dot.activo { background: #f59e0b; width: 20px; border-radius: 6px; }
+
+        /* ===== VISTAS ===== */
+        .view-tabs { display: flex; gap: 6px; background: #e2e8f0; padding: 4px; border-radius: 10px; margin-bottom: 1rem; width: max-content; max-width: 100%; overflow-x: auto; }
+        .view-tab { padding: 0.6rem 1.4rem; font-size: 0.9rem; font-weight: 800; border: none; background: transparent; color: #475569; border-radius: 8px; cursor: pointer; transition: all .2s; white-space: nowrap; }
+        .view-tab.activa { background-color: white; color: var(--primary); box-shadow: var(--shadow-sm); }
+        .vista { display: none; }
+        .vista.activa { display: block; animation: fadeIn .25s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+        /* ===== DASHBOARD ===== */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: .75rem; margin-bottom: 1rem; }
+        .stat-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: .9rem 1rem; display: flex; align-items: center; gap: .75rem; box-shadow: var(--shadow-sm); border-top: 3px solid var(--secondary); }
+        .stat-card .ic { width: 42px; height: 42px; min-width: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(2,132,199,.1); font-size: 1.3rem; }
+        .stat-card .num { font-size: 1.45rem; font-weight: 800; color: var(--primary); line-height: 1.15; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .stat-card .lbl { font-size: .66rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: .4px; }
+        .dash-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+        @media (min-width: 900px) { .dash-grid { grid-template-columns: 1fr 1fr; } }
+        .dash-grid .card { margin-bottom: 0; }
+        .lider-row { display: flex; align-items: center; gap: .6rem; padding: .55rem 0; border-bottom: 1px dashed var(--border-color); }
+        .lider-row:last-child { border-bottom: none; }
+        .cat-chip { background: var(--primary); color: #fff; font-size: .62rem; font-weight: 800; padding: 3px 9px; border-radius: 20px; white-space: nowrap; text-transform: uppercase; }
+        .cat-chip.chico { font-size: .56rem; padding: 2px 7px; }
+        .lider-info { flex: 1; min-width: 0; }
+        .lider-info strong { display: block; font-size: .9rem; color: var(--text-main); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .lider-info small { color: var(--text-muted); font-size: .72rem; }
+        .racha { font-size: .66rem; font-weight: 800; color: var(--danger); white-space: nowrap; }
+        .bar-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .45rem; }
+        .bar-name { width: 38%; font-size: .78rem; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .bar-track { flex: 1; height: 14px; background: #eef2f7; border-radius: 8px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg,#f59e0b,#d97706); min-width: 5px; transition: width .5s; }
+        .bar-fill.azul { background: linear-gradient(90deg,#0284c7,#0369a1); }
+        .bar-val { font-size: .72rem; font-weight: 800; color: var(--primary); width: 38px; text-align: right; }
+        .rec-row { display: flex; align-items: center; gap: .5rem; padding: .45rem 0; border-bottom: 1px dashed var(--border-color); font-size: .8rem; }
+        .rec-row:last-child { border-bottom: none; }
+        .rec-teams { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .rec-teams .gan { color: var(--success); }
+        .act-row { display: flex; align-items: center; gap: .6rem; margin-bottom: .55rem; font-size: .78rem; }
+        .act-row > span:first-child { width: 95px; font-weight: 700; color: var(--text-muted); }
+        .act-row b { width: 26px; text-align: right; }
+        .vacio { color: var(--text-muted); font-size: .82rem; text-align: center; padding: 1.2rem; }
+
+        .cat-nav-wrapper { margin-bottom: 1rem; overflow-x: auto; white-space: nowrap; padding-bottom: 0.25rem; }
+        .cat-nav { display: inline-flex; background: #e2e8f0; padding: 4px; border-radius: var(--radius-md); gap: 4px; }
+        .cat-tab { padding: 0.6rem 1.25rem; font-size: 0.875rem; font-weight: 700; border: none; background: transparent; color: #475569; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
+        .cat-tab.active { background-color: white; color: var(--primary); box-shadow: var(--shadow-sm); }
+
+        .grid-layout { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media (min-width: 1024px) { .grid-layout { grid-template-columns: 380px 1fr; } }
+
+        .card { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 1.25rem; box-shadow: var(--shadow-sm); margin-bottom: 1rem; }
+        .card-title { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .form-group { margin-bottom: 0.85rem; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+        .form-control { width: 100%; padding: 0.65rem 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.925rem; color: var(--text-main); background-color: #ffffff; }
+        .form-control:focus { outline: 2px solid var(--secondary); border-color: transparent; }
+        .match-inputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+
+        .match-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem; margin-bottom: 0.5rem; background-color: #fafafa; }
+        .match-meta { display: flex; justify-content: space-between; font-size: 0.725rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+        .match-teams { display: flex; flex-direction: column; gap: 0.25rem; }
+        .team-score-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; }
+        .team-score-row.winner { font-weight: 800; color: var(--primary); }
+        .score-badge { background-color: #e2e8f0; padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: 800; }
+        .score-badge.win { background-color: #dcfce7; color: var(--success); }
+        .btn-delete, .btn-edit { background: none; border: none; cursor: pointer; padding: 4px; border-radius: 4px; color: var(--danger); }
+        .btn-edit { color: var(--secondary); }
+
+        .table-section { overflow: hidden; }
+        .table-header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+        .table-subtitle { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; }
+        .table-wrapper { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: center; }
+        th { background-color: #f1f5f9; color: var(--primary); font-weight: 800; padding: 0.75rem 0.5rem; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+        td { padding: 0.65rem 0.5rem; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        tbody tr:nth-child(even) { background-color: #f8fafc; }
+        tr.podio-1 td { background-color: #fffbeb; } tr.podio-2 td { background-color: #f1f5f9; } tr.podio-3 td { background-color: #fff7ed; }
+        tr.podio-1 td:first-child { box-shadow: inset 4px 0 0 #f59e0b; }
+        tr.podio-2 td:first-child { box-shadow: inset 4px 0 0 #94a3b8; }
+        tr.podio-3 td:first-child { box-shadow: inset 4px 0 0 #d97706; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,0.7); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; padding: 1rem; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: white; padding: 1.5rem; border-radius: var(--radius-lg); max-width: 480px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; }
+        .modal-title { font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .modal-text { font-size: 0.875rem; color: var(--text-main); margin-bottom: 1.25rem; line-height: 1.6; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap; }
+
+        .icon-svg { width: 1.25rem; height: 1.25rem; fill: currentColor; display: inline-block; vertical-align: middle; }
+
+        #toast { position: fixed; bottom: 20px; right: 20px; background-color: var(--primary); color: white; padding: 0.75rem 1.25rem; border-radius: var(--radius-md); font-size: 0.85rem; font-weight: 700; box-shadow: var(--shadow-md); z-index: 2000; opacity: 0; transform: translateY(20px); transition: all 0.3s ease; pointer-events: none; max-width: 90vw; }
+        #toast.show { opacity: 1; transform: translateY(0); }
+
+        .instruction-box { background: #f1f5f9; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary); margin: 0.75rem 0; font-size: 0.85rem; }
+        .instruction-box ol { margin-left: 1.2rem; margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-title-box">
+            <svg class="icon-svg" style="width: 2.2rem; height: 2.2rem; color: #f59e0b;" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c2.12-.39 3.75-2.02 4.61-4.14C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"></path></svg>
+            <div>
+                <h1>Copa Navidad - Club Mirador <span class="pwa-badge">App Offline PRO</span></h1>
+                <p>Gestor Oficial de Bolas Criollas (100% Offline) • Excel • PDF</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button id="pwa-install-btn" class="btn btn-install" onclick="promptPWAInstall()" title="Crear acceso directo como App en Escritorio">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg><span>Instalar App</span>
+            </button>
+            <button onclick="showHelpModal()" class="btn btn-secondary" title="Ver cómo abrir sin internet">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path></svg><span>¿Cómo usar sin internet?</span>
+            </button>
+            <button onclick="manualSaveData()" class="btn btn-accent" title="Guardar cambios manualmente en el dispositivo">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"></path></svg><span>Guardar Cambios</span>
+            </button>
+            <button onclick="exportarExcel()" class="btn btn-success" title="Exportar toda la base de datos a Excel (.xlsx)">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg><span>Exportar Excel</span>
+            </button>
+            <button onclick="dispararImportarExcel()" class="btn btn-primary" title="Recrear la información desde un archivo Excel">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"></path></svg><span>Importar Excel</span>
+            </button>
+            <button onclick="exportarPDFInforme()" class="btn btn-pdf" title="Informe PDF completo del torneo">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2h8l6 6v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm7 7V3.5L18.5 9H13z"></path></svg><span>Informe PDF</span>
+            </button>
+            <button onclick="confirmClearCategory()" class="btn btn-danger" title="Borrar datos de la categoría actual">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg><span>Limpiar Categoría</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== BANNERS DE BOLAS CRIOLLAS ===== -->
+    <div class="banner-carousel" id="banner-carousel">
+        <div class="banner-slides" id="banner-slides">
+            <!-- Banner 1: Oficial -->
+            <div class="banner-slide">
+                <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Copa Navidad Club Mirador">
+                    <defs>
+                        <linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e1b4b"/><stop offset=".55" stop-color="#312e81"/><stop offset="1" stop-color="#4c1d95"/></linearGradient>
+                        <radialGradient id="boA1" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#fde68a"/><stop offset=".7" stop-color="#d97706"/><stop offset="1" stop-color="#92400e"/></radialGradient>
+                        <radialGradient id="boA2" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#fecaca"/><stop offset=".7" stop-color="#dc2626"/><stop offset="1" stop-color="#7f1d1d"/></radialGradient>
+                        <radialGradient id="boA3" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#bae6fd"/><stop offset=".7" stop-color="#0284c7"/><stop offset="1" stop-color="#075985"/></radialGradient>
+                    </defs>
+                    <rect width="1200" height="260" fill="url(#bgA)"/>
+                    <g opacity=".07" fill="#fff"><polygon points="850,0 950,0 1050,260 950,260"/><polygon points="1000,0 1050,0 1150,260 1100,260"/><polygon points="0,180 60,260 0,260"/></g>
+                    <g fill="#fbbf24" opacity=".85"><circle cx="740" cy="40" r="3"/><circle cx="770" cy="70" r="2.5"/><circle cx="715" cy="85" r="2"/><circle cx="700" cy="45" r="2"/></g>
+                    <text x="56" y="102" font-family="system-ui,'Segoe UI',sans-serif" font-size="54" font-weight="800" fill="#ffffff" letter-spacing="1">COPA NAVIDAD</text>
+                    <text x="58" y="138" font-family="system-ui,'Segoe UI',sans-serif" font-size="22" font-weight="700" fill="#fbbf24">CLUB MIRADOR • BOLAS CRIOLLAS</text>
+                    <text x="58" y="170" font-family="system-ui,'Segoe UI',sans-serif" font-size="15" fill="#c7d2fe">Torneo Oficial • Gestión de Posiciones 100% Offline</text>
+                    <g><ellipse cx="985" cy="208" rx="120" ry="14" fill="#000" opacity=".25"/>
+                        <circle cx="960" cy="150" r="56" fill="url(#boA1)"/>
+                        <circle cx="905" cy="172" r="34" fill="url(#boA3)"/>
+                        <circle cx="1040" cy="182" r="42" fill="url(#boA2)"/>
+                        <circle cx="1002" cy="116" r="13" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+                        <ellipse cx="940" cy="128" rx="14" ry="8" fill="#fff" opacity=".5" transform="rotate(-25 940 128)"/></g>
+                    <rect y="240" width="400" height="7" fill="#FFCC00"/><rect x="400" y="240" width="400" height="7" fill="#00247D"/><rect x="800" y="240" width="400" height="7" fill="#CF142B"/>
+                </svg>
+            </div>
+            <!-- Banner 2: Deporte nacional -->
+            <div class="banner-slide">
+                <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bolas Criollas Venezuela">
+                    <defs>
+                        <linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#064e3b"/><stop offset=".6" stop-color="#0f766e"/><stop offset="1" stop-color="#115e59"/></linearGradient>
+                        <radialGradient id="boB1" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#fde68a"/><stop offset=".7" stop-color="#d97706"/><stop offset="1" stop-color="#92400e"/></radialGradient>
+                        <radialGradient id="boB2" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#fecaca"/><stop offset=".7" stop-color="#b91c1c"/><stop offset="1" stop-color="#7f1d1d"/></radialGradient>
+                        <radialGradient id="boB3" cx=".35" cy=".3" r="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset=".7" stop-color="#0284c7"/><stop offset="1" stop-color="#075985"/></radialGradient>
+                    </defs>
+                    <rect width="1200" height="260" fill="url(#bgB)"/>
+                    <g opacity=".06" fill="#fff"><circle cx="200" cy="60" r="90"/><circle cx="330" cy="200" r="120"/></g>
+                    <text x="56" y="100" font-family="system-ui,'Segoe UI',sans-serif" font-size="52" font-weight="800" fill="#ffffff">BOLAS CRIOLLAS</text>
+                    <text x="58" y="136" font-family="system-ui,'Segoe UI',sans-serif" font-size="22" font-weight="700" fill="#6ee7b7">EL DEPORTE QUE NOS UNE</text>
+                    <text x="58" y="168" font-family="system-ui,'Segoe UI',sans-serif" font-size="15" fill="#d1fae5">Cancha oficial • Mingo • Tradición venezolana</text>
+                    <g><polygon points="880,55 1170,55 1125,225 915,225" fill="#8a5a2b"/>
+                        <polygon points="880,55 1170,55 1125,225 915,225" fill="none" stroke="#b45309" stroke-width="4"/>
+                        <line x1="1022" y1="58" x2="1020" y2="222" stroke="#fcd34d" stroke-width="2" stroke-dasharray="10 10" opacity=".55"/>
+                        <circle cx="995" cy="140" r="27" fill="url(#boB1)"/>
+                        <circle cx="1058" cy="158" r="21" fill="url(#boB2)"/>
+                        <circle cx="968" cy="178" r="17" fill="url(#boB3)"/>
+                        <circle cx="1030" cy="110" r="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/></g>
+                    <rect y="240" width="400" height="7" fill="#FFCC00"/><rect x="400" y="240" width="400" height="7" fill="#00247D"/><rect x="800" y="240" width="400" height="7" fill="#CF142B"/>
+                </svg>
+            </div>
+            <!-- Banner 3: Categorías -->
+            <div class="banner-slide">
+                <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Categorías del torneo">
+                    <defs><linearGradient id="bgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c2d12"/><stop offset=".55" stop-color="#b45309"/><stop offset="1" stop-color="#c2410c"/></linearGradient></defs>
+                    <rect width="1200" height="260" fill="url(#bgC)"/>
+                    <g opacity=".08" fill="#fff"><polygon points="900,0 1000,0 900,260 800,260"/><polygon points="1050,0 1100,0 1000,260 950,260"/></g>
+                    <text x="56" y="96" font-family="system-ui,'Segoe UI',sans-serif" font-size="46" font-weight="800" fill="#ffffff">5 CATEGORÍAS EN JUEGO</text>
+                    <text x="58" y="130" font-family="system-ui,'Segoe UI',sans-serif" font-size="17" fill="#ffedd5">Inscribe tu equipo y compite por la copa</text>
+                    <g font-family="system-ui,'Segoe UI',sans-serif" font-size="15" font-weight="800" text-anchor="middle">
+                        <rect x="56" y="158" width="122" height="34" rx="17" fill="#ffffff"/><text x="117" y="180" fill="#7c2d12">FEMENINO A</text>
+                        <rect x="190" y="158" width="122" height="34" rx="17" fill="#ffffff"/><text x="251" y="180" fill="#7c2d12">FEMENINO B</text>
+                        <rect x="324" y="158" width="130" height="34" rx="17" fill="#1e1b4b"/><text x="389" y="180" fill="#fbbf24">MASCULINO A</text>
+                        <rect x="466" y="158" width="130" height="34" rx="17" fill="#1e1b4b"/><text x="531" y="180" fill="#fbbf24">MASCULINO B</text>
+                        <rect x="608" y="158" width="92" height="34" rx="17" fill="#059669"/><text x="654" y="180" fill="#ffffff">MIXTO</text>
+                    </g>
+                    <g><circle cx="985" cy="150" r="48" fill="#fde68a"/><ellipse cx="968" cy="132" rx="12" ry="7" fill="#fff" opacity=".7" transform="rotate(-25 968 132)"/><circle cx="1075" cy="175" r="30" fill="#0284c7"/><ellipse cx="1065" cy="163" rx="8" ry="5" fill="#fff" opacity=".6" transform="rotate(-25 1065 163)"/><circle cx="930" cy="192" r="22" fill="#dc2626"/></g>
+                    <rect y="240" width="400" height="7" fill="#FFCC00"/><rect x="400" y="240" width="400" height="7" fill="#00247D"/><rect x="800" y="240" width="400" height="7" fill="#CF142B"/>
+                </svg>
+            </div>
+            <!-- Banner 4: Líder dinámico -->
+            <div class="banner-slide">
+                <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Equipo líder">
+                    <defs><linearGradient id="bgD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset=".6" stop-color="#1e3a8a"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
+                    <rect width="1200" height="260" fill="url(#bgD)"/>
+                    <g opacity=".08" fill="#fff"><circle cx="180" cy="70" r="100"/><circle cx="300" cy="220" r="130"/></g>
+                    <text x="56" y="80" font-family="system-ui,'Segoe UI',sans-serif" font-size="17" font-weight="800" fill="#fbbf24" letter-spacing="2">🏆 EQUIPO LÍDER DEL TORNEO</text>
+                    <text id="banner-lider-nombre" x="56" y="130" font-family="system-ui,'Segoe UI',sans-serif" font-size="42" font-weight="800" fill="#ffffff">Por definir</text>
+                    <text x="58" y="164" font-family="system-ui,'Segoe UI',sans-serif" font-size="15" fill="#bfdbfe">Consulta el Dashboard para estadísticas completas</text>
+                    <g transform="translate(930,45) scale(5.5)">
+                        <path fill="#f59e0b" d="M6 2h12v7a6 6 0 0 1-3.6 5.5L14 17h2v3H8v-3h2l-.4-2.5A6 6 0 0 1 6 9V2z"/>
+                        <path fill="none" stroke="#f59e0b" stroke-width="1.6" d="M6 4H3v1a4 4 0 0 0 4 4M18 4h3v1a4 4 0 0 1-4 4"/>
+                    </g>
+                    <rect x="965" y="200" width="95" height="10" rx="4" fill="#b45309"/>
+                    <rect y="240" width="400" height="7" fill="#FFCC00"/><rect x="400" y="240" width="400" height="7" fill="#00247D"/><rect x="800" y="240" width="400" height="7" fill="#CF142B"/>
+                </svg>
+            </div>
+        </div>
+        <button class="banner-btn prev" onclick="bannerIr(bannerIdx-1)" aria-label="Anterior">‹</button>
+        <button class="banner-btn next" onclick="bannerIr(bannerIdx+1)" aria-label="Siguiente">›</button>
+        <div class="banner-dots" id="banner-dots"></div>
+    </div>
+
+    <!-- Selector de vistas -->
+    <nav class="view-tabs">
+        <button class="view-tab activa" data-vista="dashboard" onclick="cambiarVista('dashboard')">📊 Dashboard</button>
+        <button class="view-tab" data-vista="gestion" onclick="cambiarVista('gestion')">🎳 Gestión del Torneo</button>
+    </nav>
+
+    <!-- ================= VISTA DASHBOARD ================= -->
+    <section id="vista-dashboard" class="vista activa">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="ic">👥</div><div><div class="num" id="stat-equipos">0</div><div class="lbl">Equipos Inscritos</div></div></div>
+            <div class="stat-card"><div class="ic">🎳</div><div><div class="num" id="stat-partidos">0</div><div class="lbl">Partidos Jugados</div></div></div>
+            <div class="stat-card"><div class="ic">🏆</div><div><div class="num" id="stat-categorias">0 / 5</div><div class="lbl">Categorías Activas</div></div></div>
+            <div class="stat-card"><div class="ic">🎯</div><div><div class="num" id="stat-tantos">0</div><div class="lbl">Tantos Anotados</div></div></div>
+            <div class="stat-card"><div class="ic">👑</div><div><div class="num" id="stat-lider">—</div><div class="lbl">Líder Global</div></div></div>
+        </div>
+        <div class="dash-grid">
+            <div class="card">
+                <h2 class="card-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c2.12-.39 3.75-2.02 4.61-4.14C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2z"></path></svg><span>Líderes por Categoría</span></h2>
+                <div id="dash-lideres"></div>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"></path></svg><span>Top Equipos por AVG (Global)</span></h2>
+                <div id="dash-chart"></div>
+            </div>
+        </div>
+        <div class="dash-grid">
+            <div class="card">
+                <h2 class="card-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path></svg><span>Últimos Resultados</span></h2>
+                <div id="dash-recientes"></div>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"></path></svg><span>Actividad por Categoría</span></h2>
+                <div id="dash-actividad"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= VISTA GESTIÓN ================= -->
+    <section id="vista-gestion" class="vista">
+        <div class="cat-nav-wrapper">
+            <div class="cat-nav">
+                <button class="cat-tab" data-cat="femenino_a" onclick="switchCategory('femenino_a')">Femenino A</button>
+                <button class="cat-tab" data-cat="femenino_b" onclick="switchCategory('femenino_b')">Femenino B</button>
+                <button class="cat-tab" data-cat="masculino_a" onclick="switchCategory('masculino_a')">Masculino A</button>
+                <button class="cat-tab active" data-cat="masculino_b" onclick="switchCategory('masculino_b')">Masculino B</button>
+                <button class="cat-tab" data-cat="mixto" onclick="switchCategory('mixto')">Mixto</button>
+            </div>
+        </div>
+
+        <div class="grid-layout">
+            <div>
+                <div class="card">
+                    <h2 class="card-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg><span>Agregar Equipo</span></h2>
+                    <form onsubmit="addTeam(event)">
+                        <div class="form-group">
+                            <label>Nombre del Equipo</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" id="new-team-input" class="form-control" placeholder="Ej. Los Gavilanes" required>
+                                <button type="submit" class="btn btn-success" style="white-space: nowrap;">+ Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg><span>Registrar Partido</span></h2>
+                    <form onsubmit="addMatch(event)">
+                        <div class="form-group"><label>Equipo 1</label><input type="text" id="team1-input" class="form-control" list="teams-datalist" placeholder="Nombre equipo 1" required></div>
+                        <div class="form-group"><label>Equipo 2</label><input type="text" id="team2-input" class="form-control" list="teams-datalist" placeholder="Nombre equipo 2" required></div>
+                        <div class="match-inputs-grid">
+                            <div class="form-group"><label>Tantos Eq. 1</label><input type="number" id="score1-input" class="form-control" min="0" max="99" placeholder="0" required></div>
+                            <div class="form-group"><label>Tantos Eq. 2</label><input type="number" id="score2-input" class="form-control" min="0" max="99" placeholder="0" required></div>
+                        </div>
+                        <div class="match-inputs-grid">
+                            <div class="form-group"><label>Fecha</label><input type="date" id="match-date-input" class="form-control"></div>
+                            <div class="form-group"><label>Hora (Opcional)</label><input type="time" id="match-time-input" class="form-control"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Guardar Resultado</button>
+                    </form>
+                    <datalist id="teams-datalist"></datalist>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                        <h2 class="card-title" style="margin-bottom: 0;">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path></svg>
+                            <span>Historial de Partidos</span>
+                        </h2>
+                        <button onclick="exportDailyResultsPNG()" class="btn btn-accent" style="padding: 0.35rem 0.65rem; font-size: 0.775rem;" title="Descargar Resultados como Imagen PNG">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg><span>Descargar PNG</span>
+                        </button>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0.75rem;">
+                        <label>Filtrar Juegos por Fecha:</label>
+                        <select id="history-date-filter" class="form-control" onchange="renderHistory()"></select>
+                    </div>
+                    <div id="history-list"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card table-section">
+                    <div class="table-header-info">
+                        <div>
+                            <h2 style="font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg class="icon-svg" style="color: var(--primary);" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"></path></svg>
+                                <span>Tabla de Posiciones</span>
+                            </h2>
+                            <p id="active-category-subtitle" class="table-subtitle">Categoría: Masculino B</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem;">
+                            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                                <button onclick="exportarPDFPosiciones()" class="btn btn-pdf" style="padding: 0.55rem 0.9rem;" title="Descargar Tabla en PDF">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2h8l6 6v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm7 7V3.5L18.5 9H13z"></path></svg><span>PDF</span>
+                                </button>
+                                <button onclick="exportStandingsPNG()" class="btn btn-accent" style="padding: 0.55rem 0.9rem;" title="Descargar Tabla como Imagen PNG">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg><span>Tabla PNG</span>
+                                </button>
+                            </div>
+                            <span style="font-size: 0.725rem; color: var(--text-muted);">* Ordenado por AVG y Juegos de Diferencia (JD)</span>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 45px;">POS</th><th style="text-align: left;">EQUIPO</th>
+                                    <th style="width: 45px;">J</th><th style="width: 45px;">G</th><th style="width: 45px;">P</th><th style="width: 45px;">E</th>
+                                    <th style="width: 55px;">TF</th><th style="width: 55px;">TC</th>
+                                    <th style="width: 75px;">AVG</th><th style="width: 65px;">JD</th>
+                                </tr>
+                            </thead>
+                            <tbody id="standings-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal Limpiar Categoría -->
+<div id="clear-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h3 class="modal-title" style="color: var(--danger);">¿Seguro que deseas borrar la categoría?</h3>
+        <p class="modal-text">Si aceptas, se borrará todo el historial de partidos y la tabla de posiciones de <strong id="modal-cat-name"></strong>. Esta acción no se puede deshacer.</p>
+        <div class="modal-actions">
+            <button onclick="closeModal('clear-modal')" class="btn btn-secondary">Cancelar</button>
+            <button onclick="executeClearCategory()" class="btn btn-danger">Sí, borrar todo</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Partido -->
+<div id="edit-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h3 class="modal-title">Editar Partido</h3>
+        <form onsubmit="guardarEdicionPartido(event)">
+            <input type="hidden" id="edit-match-id">
+            <div class="form-group"><label>Equipo 1</label><input type="text" id="edit-t1" class="form-control" list="teams-datalist" required></div>
+            <div class="form-group"><label>Equipo 2</label><input type="text" id="edit-t2" class="form-control" list="teams-datalist" required></div>
+            <div class="match-inputs-grid">
+                <div class="form-group"><label>Tantos Eq. 1</label><input type="number" id="edit-s1" class="form-control" min="0" max="99" required></div>
+                <div class="form-group"><label>Tantos Eq. 2</label><input type="number" id="edit-s2" class="form-control" min="0" max="99" required></div>
+            </div>
+            <div class="match-inputs-grid">
+                <div class="form-group"><label>Fecha</label><input type="date" id="edit-date" class="form-control"></div>
+                <div class="form-group"><label>Hora</label><input type="time" id="edit-time" class="form-control"></div>
+            </div>
+            <div class="modal-actions" style="margin-top: 1rem;">
+                <button type="button" onclick="closeModal('edit-modal')" class="btn btn-secondary">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Importar Excel -->
+<div id="import-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h3 class="modal-title">Recrear información desde Excel</h3>
+        <p class="modal-text" id="import-resumen"></p>
+        <div class="instruction-box">💡 La hoja <strong>Equipos</strong> y la hoja <strong>Partidos</strong> del archivo se usarán para reconstruir todas las categorías. Exporta tu Excel con el botón <strong>"Exportar Excel"</strong> antes de reinstalar o cambiar de dispositivo.</div>
+        <div class="modal-actions">
+            <button onclick="closeModal('import-modal')" class="btn btn-secondary">Cancelar</button>
+            <button onclick="ejecutarImportacion()" class="btn btn-success">Reemplazar e Importar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ayuda -->
+<div id="help-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h3 class="modal-title">¿Cómo tener esta App en el Escritorio sin internet?</h3>
+        <p class="modal-text">Esta es una <strong>Aplicación Web Offline (PWA)</strong> y también puede compilarse como <strong>.EXE para Windows</strong> y <strong>.APK para Android</strong> (incluye exportación a Excel y PDF sin internet).</p>
+        <div class="instruction-box"><strong>En PC (Chrome o Edge):</strong>
+            <ol><li>Presiona el botón verde <strong>"Instalar App"</strong> arriba.</li><li>O en el menú ⋮ elige <strong>Guardar y compartir → Instalar como aplicación</strong>.</li></ol>
+        </div>
+        <div class="instruction-box"><strong>En Móvil (Android / iPhone):</strong>
+            <ol><li>Menú del navegador → <strong>"Agregar a pantalla principal"</strong>.</li></ol>
+        </div>
+        <div class="instruction-box"><strong>Respaldos con Excel:</strong>
+            <ol><li>Usa <strong>"Exportar Excel"</strong> para generar tu base de datos portátil (.xlsx).</li><li>En cualquier instalación nueva, usa <strong>"Importar Excel"</strong> y toda la información se recrea automáticamente.</li><li>También puedes exportar las tablas en <strong>PDF</strong> e imágenes <strong>PNG</strong>.</li></ol>
+        </div>
+        <div class="modal-actions" style="margin-top: 1rem;"><button onclick="closeModal('help-modal')" class="btn btn-primary">Entendido</button></div>
+    </div>
+</div>
+
+<input type="file" id="excel-file-input" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   TORNEO COPA NAVIDAD - CLUB MIRADOR (v2.0 PRO)
+   100% Offline • Exporta/Importa Excel • Exporta PDF • Dashboard
+   ============================================================ */
+const STORAGE_KEY = 'torneo_copa_navidad_mirador_pwa_clean_v1';
+const categoryNames = { 'femenino_a':'Femenino A','femenino_b':'Femenino B','masculino_a':'Masculino A','masculino_b':'Masculino B','mixto':'Mixto' };
+
+let currentCategory = 'masculino_b';
+let categoriesData = {};
+let deferredPrompt = null;
+let pendingImport = null;
+let editandoId = null;
+
+/* ---------- Service Worker (PWA Offline) ---------- */
+if ('serviceWorker' in navigator) {
+    const swCode = `
+        self.addEventListener('install', (e) => self.skipWaiting());
+        self.addEventListener('activate', (e) => e.waitUntil(clients.claim()));
+        self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request).catch(() => caches.match(e.request))));
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+}
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); deferredPrompt = e;
+    const btn = document.getElementById('pwa-install-btn');
+    if (btn) btn.style.display = 'inline-flex';
+});
+function promptPWAInstall() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((r) => {
+            if (r.outcome === 'accepted') showToast("¡Aplicación instalada con éxito en tu dispositivo!", "success");
+            deferredPrompt = null;
+        });
+    } else showHelpModal();
+}
+function showHelpModal(){ document.getElementById('help-modal').classList.add('active'); }
+function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+
+/* ---------- Persistencia ---------- */
+function initDefaultCategories(){
+    categoriesData = {};
+    for (let key in categoryNames) categoriesData[key] = { teams: [], matches: [] };
+}
+function loadDataFromLocal(){
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+            categoriesData = JSON.parse(raw);
+            for (let key in categoryNames) {
+                if (!categoriesData[key]) categoriesData[key] = { teams: [], matches: [] };
+                if (!Array.isArray(categoriesData[key].matches)) categoriesData[key].matches = [];
+                if (!Array.isArray(categoriesData[key].teams)) categoriesData[key].teams = [];
+            }
+        } else initDefaultCategories();
+    } catch (e) { initDefaultCategories(); }
+}
+function saveDataToLocal(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(categoriesData)); } catch(e){ console.error("Error guardando datos:", e); }
+    programarAutoGuardadoExcel();
+}
+function manualSaveData(){ saveDataToLocal(); showToast("¡Cambios guardados con éxito en tu dispositivo!", "success"); }
+
+/* ---------- Cálculo de posiciones (lógica original intacta) ---------- */
+function calculateStandings(catKey){
+    const matches = (categoriesData[catKey] && categoriesData[catKey].matches) ? categoriesData[catKey].matches : [];
+    const registeredTeams = (categoriesData[catKey] && categoriesData[catKey].teams) ? categoriesData[catKey].teams : [];
+    const teamsMap = {};
+    registeredTeams.forEach(tName => {
+        const trimmed = tName.trim();
+        if (trimmed && !teamsMap[trimmed]) teamsMap[trimmed] = { name: trimmed, j: 0, g: 0, p: 0, e: 0, tf: 0, tc: 0 };
+    });
+    matches.forEach(m => {
+        const t1 = m.t1.trim(), t2 = m.t2.trim();
+        const s1 = parseInt(m.s1) || 0, s2 = parseInt(m.s2) || 0;
+        if (!teamsMap[t1]) teamsMap[t1] = { name: t1, j: 0, g: 0, p: 0, e: 0, tf: 0, tc: 0 };
+        if (!teamsMap[t2]) teamsMap[t2] = { name: t2, j: 0, g: 0, p: 0, e: 0, tf: 0, tc: 0 };
+        teamsMap[t1].j++; teamsMap[t2].j++;
+        teamsMap[t1].tf += s1; teamsMap[t1].tc += s2;
+        teamsMap[t2].tf += s2; teamsMap[t2].tc += s1;
+        if (s1 > s2) { teamsMap[t1].g++; teamsMap[t2].p++; }
+        else if (s2 > s1) { teamsMap[t2].g++; teamsMap[t1].p++; }
+        else { teamsMap[t1].e++; teamsMap[t2].e++; }
+    });
+    const teams = Object.values(teamsMap).map(t => ({ ...t, avg: t.j > 0 ? (t.g / t.j) : 0, dt: t.tf - t.tc }));
+    teams.sort((a, b) => {
+        if (b.avg !== a.avg) return b.avg - a.avg;
+        if (b.g !== a.g) return b.g - a.g;
+        if (a.p !== b.p) return a.p - b.p;
+        if (b.dt !== a.dt) return b.dt - a.dt;
+        return a.name.localeCompare(b.name);
+    });
+    if (teams.length > 0) {
+        const leaderG = teams[0].g, leaderP = teams[0].p;
+        teams.forEach(t => { t.jd = ((leaderG - t.g) + (t.p - leaderP)) / 2; });
+    }
+    return teams;
+}
+function calcularRacha(catKey, teamName){
+    const ms = (categoriesData[catKey].matches || []).slice().sort((a,b)=>a.date.localeCompare(b.date));
+    let racha = 0;
+    for (let i = ms.length - 1; i >= 0; i--) {
+        const m = ms[i];
+        let gano = null;
+        if (m.t1 === teamName) gano = m.s1 > m.s2;
+        else if (m.t2 === teamName) gano = m.s2 > m.s1;
+        if (gano === null) continue;
+        if (gano) { if (racha >= 0) racha++; else break; }
+        else { if (racha <= 0) racha--; else break; }
+    }
+    return racha;
+}
+
+/* ---------- Equipos y Partidos ---------- */
+function addTeam(e){
+    e.preventDefault();
+    const input = document.getElementById('new-team-input');
+    const name = input.value.trim();
+    if (!name) return;
+    if (!categoriesData[currentCategory].teams) categoriesData[currentCategory].teams = [];
+    const existingStandings = calculateStandings(currentCategory);
+    const existsInStandings = existingStandings.some(t => t.name.toLowerCase() === name.toLowerCase());
+    const existsInTeams = categoriesData[currentCategory].teams.some(t => t.toLowerCase() === name.toLowerCase());
+    if (existsInStandings || existsInTeams) { showToast(`El equipo "${name}" ya existe en esta categoría.`, "danger"); return; }
+    categoriesData[currentCategory].teams.push(name);
+    saveDataToLocal(); updateUI();
+    input.value = '';
+    showToast(`¡Equipo "${name}" agregado correctamente!`, "success");
+}
+function addMatch(e){
+    e.preventDefault();
+    const t1 = document.getElementById('team1-input').value.trim();
+    const t2 = document.getElementById('team2-input').value.trim();
+    const s1 = document.getElementById('score1-input').value;
+    const s2 = document.getElementById('score2-input').value;
+    const date = document.getElementById('match-date-input').value;
+    const time = document.getElementById('match-time-input').value;
+    if (!t1 || !t2) { showToast("Por favor ingresa ambos equipos.", "danger"); return; }
+    if (t1.toLowerCase() === t2.toLowerCase()) { showToast("Un equipo no puede jugar contra sí mismo.", "danger"); return; }
+    if (s1 === "" || s2 === "" || parseInt(s1) < 0 || parseInt(s2) < 0) { showToast("Por favor ingresa tantos válidos.", "danger"); return; }
+    if (!categoriesData[currentCategory].teams.includes(t1)) categoriesData[currentCategory].teams.push(t1);
+    if (!categoriesData[currentCategory].teams.includes(t2)) categoriesData[currentCategory].teams.push(t2);
+    categoriesData[currentCategory].matches.push({
+        id: 'm_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        t1, t2, s1: parseInt(s1), s2: parseInt(s2),
+        date: date || new Date().toISOString().split('T')[0], time: time || ''
+    });
+    saveDataToLocal(); updateUI();
+    document.getElementById('score1-input').value = '';
+    document.getElementById('score2-input').value = '';
+    document.getElementById('team1-input').focus();
+    showToast("¡Resultado guardado correctamente!", "success");
+}
+function deleteMatch(matchId){
+    const matches = categoriesData[currentCategory].matches || [];
+    categoriesData[currentCategory].matches = matches.filter(m => m.id !== matchId);
+    saveDataToLocal(); updateUI();
+    showToast("Partido eliminado del historial.", "warning");
+}
+function abrirEdicionPartido(id){
+    const m = (categoriesData[currentCategory].matches || []).find(x => x.id === id);
+    if (!m) return;
+    editandoId = id;
+    document.getElementById('edit-t1').value = m.t1;
+    document.getElementById('edit-t2').value = m.t2;
+    document.getElementById('edit-s1').value = m.s1;
+    document.getElementById('edit-s2').value = m.s2;
+    document.getElementById('edit-date').value = m.date || '';
+    document.getElementById('edit-time').value = m.time || '';
+    document.getElementById('edit-modal').classList.add('active');
+}
+function guardarEdicionPartido(e){
+    e.preventDefault();
+    const m = (categoriesData[currentCategory].matches || []).find(x => x.id === editandoId);
+    if (!m) return;
+    const t1 = document.getElementById('edit-t1').value.trim();
+    const t2 = document.getElementById('edit-t2').value.trim();
+    const s1 = parseInt(document.getElementById('edit-s1').value);
+    const s2 = parseInt(document.getElementById('edit-s2').value);
+    if (!t1 || !t2) { showToast("Ingresa ambos equipos.", "danger"); return; }
+    if (t1.toLowerCase() === t2.toLowerCase()) { showToast("Un equipo no puede jugar contra sí mismo.", "danger"); return; }
+    if (isNaN(s1) || isNaN(s2) || s1 < 0 || s2 < 0) { showToast("Tantos inválidos.", "danger"); return; }
+    m.t1 = t1; m.t2 = t2; m.s1 = s1; m.s2 = s2;
+    m.date = document.getElementById('edit-date').value || m.date;
+    m.time = document.getElementById('edit-time').value || '';
+    [t1, t2].forEach(t => { if (!categoriesData[currentCategory].teams.includes(t)) categoriesData[currentCategory].teams.push(t); });
+    saveDataToLocal(); closeModal('edit-modal'); updateUI();
+    showToast("Partido actualizado correctamente.", "success");
+}
+function confirmClearCategory(){
+    document.getElementById('modal-cat-name').textContent = categoryNames[currentCategory];
+    document.getElementById('clear-modal').classList.add('active');
+}
+function executeClearCategory(){
+    categoriesData[currentCategory] = { teams: [], matches: [] };
+    saveDataToLocal(); closeModal('clear-modal'); updateUI();
+    showToast(`Categoría ${categoryNames[currentCategory]} borrada.`, "success");
+}
+
+/* ---------- Renderizado ---------- */
+function formatoAVG(avg){ let s = (avg || 0).toFixed(3); if (s.startsWith('0.')) s = s.replace('0.', '.'); return s; }
+function formatoJD(jd){ return (jd === 0 || isNaN(jd)) ? '—' : jd.toFixed(1).replace('.0', ''); }
+function formatoRacha(r){ if (r > 0) return '🔥 ' + r + ' seguidas'; if (r < 0) return Math.abs(r) + ' derrotas'; return '—'; }
+
+function renderStandings(){
+    const tbody = document.getElementById('standings-tbody');
+    const standings = calculateStandings(currentCategory);
+    document.getElementById('active-category-subtitle').textContent = `Categoría: ${categoryNames[currentCategory]}`;
+    if (standings.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; padding:2.5rem; color:var(--text-muted);"><strong>No hay equipos registrados en ${categoryNames[currentCategory]}.</strong><br><small>Utiliza "+ Agregar Equipo" arriba para registrar tu primer equipo.</small></td></tr>`;
+        return;
+    }
+    tbody.innerHTML = standings.map((t, idx) => `
+        <tr class="${idx===0?'podio-1':idx===1?'podio-2':idx===2?'podio-3':''}">
+            <td style="font-weight:800; color:var(--primary);">${idx + 1}</td>
+            <td style="font-weight:700; text-align:left;">${escapeHtml(t.name)}</td>
+            <td>${t.j}</td>
+            <td style="color:var(--success); font-weight:800;">${t.g}</td>
+            <td style="color:var(--danger); font-weight:800;">${t.p}</td>
+            <td>${t.e}</td>
+            <td style="color:var(--text-muted);">${t.tf}</td>
+            <td style="color:var(--text-muted);">${t.tc}</td>
+            <td style="font-weight:800; background-color:rgba(30,27,75,.04);">${formatoAVG(t.avg)}</td>
+            <td style="font-weight:700; color:var(--secondary);">${formatoJD(t.jd)}</td>
+        </tr>`).join('');
+}
+function renderHistory(){
+    const historyList = document.getElementById('history-list');
+    const dateFilter = document.getElementById('history-date-filter');
+    const matches = categoriesData[currentCategory].matches || [];
+    const uniqueDates = [...new Set(matches.map(m => m.date))].sort().reverse();
+    const currentSelected = dateFilter.value;
+    dateFilter.innerHTML = `<option value="ALL">Todas las Fechas</option>` + uniqueDates.map(d => `<option value="${d}">${formatDateSpanish(d)}</option>`).join('');
+    if (uniqueDates.includes(currentSelected)) dateFilter.value = currentSelected; else dateFilter.value = "ALL";
+    const filteredMatches = dateFilter.value === "ALL" ? [...matches].reverse() : matches.filter(m => m.date === dateFilter.value).reverse();
+    if (filteredMatches.length === 0) {
+        historyList.innerHTML = `<div style="text-align:center; color:var(--text-muted); padding:1.5rem; font-size:.85rem;">No hay partidos registrados en esta vista.</div>`;
+        return;
+    }
+    historyList.innerHTML = filteredMatches.map(m => {
+        const t1Wins = parseInt(m.s1) > parseInt(m.s2), t2Wins = parseInt(m.s2) > parseInt(m.s1);
+        return `
+        <div class="match-item">
+            <div class="match-meta">
+                <span>${formatDateSpanish(m.date)} ${m.time ? '• ' + m.time : ''}</span>
+                <span>
+                    <button class="btn-edit" onclick="abrirEdicionPartido('${m.id}')" title="Editar Partido"><svg class="icon-svg" style="width:1rem;height:1rem;" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></button>
+                    <button class="btn-delete" onclick="deleteMatch('${m.id}')" title="Eliminar Partido"><svg class="icon-svg" style="width:1rem;height:1rem;" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></button>
+                </span>
+            </div>
+            <div class="match-teams">
+                <div class="team-score-row ${t1Wins ? 'winner' : ''}"><span class="team-name">${escapeHtml(m.t1)}</span><span class="score-badge ${t1Wins ? 'win' : ''}">${m.s1}</span></div>
+                <div class="team-score-row ${t2Wins ? 'winner' : ''}"><span class="team-name">${escapeHtml(m.t2)}</span><span class="score-badge ${t2Wins ? 'win' : ''}">${m.s2}</span></div>
+            </div>
+        </div>`;
+    }).join('');
+}
+function renderTeamDatalist(){
+    const datalist = document.getElementById('teams-datalist');
+    const standings = calculateStandings(currentCategory);
+    datalist.innerHTML = standings.map(t => `<option value="${escapeHtml(t.name)}">`).join('');
+}
+function switchCategory(cat){
+    currentCategory = cat;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+    updateUI();
+}
+function cambiarVista(v){
+    document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('activa', t.dataset.vista === v));
+    document.getElementById('vista-dashboard').classList.toggle('activa', v === 'dashboard');
+    document.getElementById('vista-gestion').classList.toggle('activa', v === 'gestion');
+}
+function updateUI(){ renderStandings(); renderHistory(); renderTeamDatalist(); renderDashboard(); }
+
+/* ---------- DASHBOARD ---------- */
+function renderDashboard(){
+    let totalE = 0, totalP = 0, totalT = 0, activas = 0;
+    const porCat = {};
+    for (const k in categoryNames) {
+        const st = calculateStandings(k);
+        const ms = categoriesData[k].matches || [];
+        totalE += st.length; totalP += ms.length;
+        totalT += ms.reduce((s, m) => s + (+m.s1 || 0) + (+m.s2 || 0), 0);
+        if (st.length > 0) activas++;
+        porCat[k] = { st, nM: ms.length };
+    }
+    document.getElementById('stat-equipos').textContent = totalE;
+    document.getElementById('stat-partidos').textContent = totalP;
+    document.getElementById('stat-categorias').textContent = activas + ' / 5';
+    document.getElementById('stat-tantos').textContent = totalT;
+
+    const todos = [];
+    for (const k in categoryNames) calculateStandings(k).forEach(t => todos.push({ ...t, cat: k }));
+    todos.sort((a, b) => b.avg - a.avg || b.g - a.g);
+    const lider = todos.find(t => t.j > 0);
+    document.getElementById('stat-lider').textContent = lider ? lider.name : '—';
+    const bl = document.getElementById('banner-lider-nombre');
+    if (bl) bl.textContent = lider ? lider.name : 'Por definir';
+
+    document.getElementById('dash-lideres').innerHTML = Object.keys(categoryNames).map(k => {
+        const l = porCat[k].st.find(t => t.j > 0) || porCat[k].st[0];
+        return `<div class="lider-row">
+            <span class="cat-chip">${categoryNames[k]}</span>
+            <div class="lider-info">${l ? `<strong>${escapeHtml(l.name)}</strong><small>${l.g}G - ${l.p}P - ${l.e}E ${l.j > 0 ? '• AVG ' + formatoAVG(l.avg) : ''}</small>` : '<em style="color:var(--text-muted)">Sin datos</em>'}</div>
+            <span class="racha">${l && l.j > 0 ? formatoRacha(calcularRacha(k, l.name)) : ''}</span>
+        </div>`;
+    }).join('');
+
+    const top = todos.filter(t => t.j > 0).sort((a, b) => b.avg - a.avg).slice(0, 8);
+    const max = top.length ? top[0].avg : 1;
+    document.getElementById('dash-chart').innerHTML = top.length ? top.map((t, i) => `
+        <div class="bar-row">
+            <span class="bar-name">${i + 1}. ${escapeHtml(t.name)}</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.max(6, (t.avg / max) * 100)}%"></div></div>
+            <span class="bar-val">${formatoAVG(t.avg)}</span>
+        </div>`).join('') : '<p class="vacio">Registra partidos para ver el ranking.</p>';
+
+    const recientes = [];
+    for (const k in categoryNames) (categoriesData[k].matches || []).forEach(m => recientes.push({ ...m, cat: k }));
+    recientes.sort((a, b) => (b.date + (b.time || '')).localeCompare(a.date + (a.time || '')));
+    document.getElementById('dash-recientes').innerHTML = recientes.length ? recientes.slice(0, 8).map(m => `
+        <div class="rec-row">
+            <span class="cat-chip chico">${categoryNames[m.cat].split(' ')[0]}</span>
+            <span class="rec-teams"><b class="${m.s1 > m.s2 ? 'gan' : ''}">${escapeHtml(m.t1)}</b> ${m.s1} — ${m.s2} <b class="${m.s2 > m.s1 ? 'gan' : ''}">${escapeHtml(m.t2)}</b></span>
+            <small style="color:var(--text-muted)">${formatDateSpanish(m.date)}</small>
+        </div>`).join('') : '<p class="vacio">Aún no hay partidos registrados.</p>';
+
+    const maxM = Math.max(1, ...Object.values(porCat).map(p => p.nM));
+    document.getElementById('dash-actividad').innerHTML = Object.keys(categoryNames).map(k => `
+        <div class="act-row">
+            <span>${categoryNames[k]}</span>
+            <div class="bar-track"><div class="bar-fill azul" style="width:${(porCat[k].nM / maxM) * 100}%"></div></div>
+            <b>${porCat[k].nM}</b>
+        </div>`).join('');
+}
+
+/* ---------- BANNERS (carrusel) ---------- */
+let bannerIdx = 0, bannerTimer = null;
+function iniciarBanners(){
+    const n = document.querySelectorAll('.banner-slide').length;
+    document.getElementById('banner-dots').innerHTML = Array.from({length:n},(_,i)=>`<button class="banner-dot" onclick="bannerIr(${i})" aria-label="Banner ${i+1}"></button>`).join('');
+    bannerIr(0);
+    bannerTimer = setInterval(() => bannerIr(bannerIdx + 1), 6000);
+    const c = document.getElementById('banner-carousel');
+    c.addEventListener('mouseenter', () => clearInterval(bannerTimer));
+    c.addEventListener('mouseleave', () => { clearInterval(bannerTimer); bannerTimer = setInterval(() => bannerIr(bannerIdx + 1), 6000); });
+    let sx = 0;
+    c.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
+    c.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) bannerIr(bannerIdx + (dx < 0 ? 1 : -1)); }, { passive: true });
+}
+function bannerIr(i){
+    const n = document.querySelectorAll('.banner-slide').length;
+    bannerIdx = ((i % n) + n) % n;
+    document.getElementById('banner-slides').style.transform = `translateX(-${bannerIdx * 25}%)`;
+    document.querySelectorAll('.banner-dot').forEach((d, j) => d.classList.toggle('activo', j === bannerIdx));
+}
+
+/* ============================================================
+   MOTOR XLSX (escritura y lectura 100% propia, sin librerías)
+   ============================================================ */
+const XLSX = (() => {
+    function crc32(buf){
+        const T = crc32.T || (crc32.T = (() => {
+            const t = new Int32Array(256);
+            for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1); t[n] = c; }
+            return t;
+        })());
+        let crc = -1;
+        for (let i = 0; i < buf.length; i++) crc = (crc >>> 8) ^ T[(crc ^ buf[i]) & 0xFF];
+        return (crc ^ -1) >>> 0;
+    }
+    function zipStore(files){
+        const partes = [], centrales = [];
+        let offset = 0;
+        files.forEach(f => {
+            const nb = new TextEncoder().encode(f.name);
+            const crc = crc32(f.data);
+            const lh = new Uint8Array(30 + nb.length);
+            const lv = new DataView(lh.buffer);
+            lv.setUint32(0, 0x04034b50, true); lv.setUint16(4, 20, true);
+            lv.setUint16(6, 0, true); lv.setUint16(8, 0, true);
+            lv.setUint16(10, 0, true); lv.setUint16(12, 0x5821, true);
+            lv.setUint32(14, crc, true); lv.setUint32(18, f.data.length, true); lv.setUint32(22, f.data.length, true);
+            lv.setUint16(26, nb.length, true); lv.setUint16(28, 0, true);
+            lh.set(nb, 30);
+            partes.push(lh, f.data);
+            const cd = new Uint8Array(46 + nb.length);
+            const cv = new DataView(cd.buffer);
+            cv.setUint32(0, 0x02014b50, true); cv.setUint16(4, 20, true); cv.setUint16(6, 20, true);
+            cv.setUint16(8, 0, true); cv.setUint16(10, 0, true); cv.setUint16(12, 0, true); cv.setUint16(14, 0x5821, true);
+            cv.setUint32(16, crc, true); cv.setUint32(20, f.data.length, true); cv.setUint32(24, f.data.length, true);
+            cv.setUint16(28, nb.length, true); cv.setUint16(30, 0, true); cv.setUint16(32, 0, true);
+            cv.setUint16(34, 0, true); cv.setUint16(36, 0, true); cv.setUint32(38, 0, true); cv.setUint32(42, offset, true);
+            cd.set(nb, 46);
+            centrales.push(cd);
+            offset += lh.length + f.data.length;
+        });
+        const tamC = centrales.reduce((s, c) => s + c.length, 0);
+        const eocd = new Uint8Array(22);
+        const ev = new DataView(eocd.buffer);
+        ev.setUint32(0, 0x06054b50, true); ev.setUint16(8, files.length, true); ev.setUint16(10, files.length, true);
+        ev.setUint32(12, tamC, true); ev.setUint32(16, offset, true);
+        const todas = [...partes, ...centrales, eocd];
+        const out = new Uint8Array(todas.reduce((s, c) => s + c.length, 0));
+        let pos = 0;
+        todas.forEach(c => { out.set(c, pos); pos += c.length; });
+        return out;
+    }
+    const escX = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    function colName(n){ let s = ''; n++; while (n > 0) { const m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); } return s; }
+    function sheetXml(rows, cols){
+        let x = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">';
+        if (cols && cols.length) x += '<cols>' + cols.map((w, i) => `<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join('') + '</cols>';
+        x += '<sheetData>';
+        rows.forEach((row, ri) => {
+            if (!row || row.length === 0) { x += `<row r="${ri+1}"/>`; return; }
+            x += `<row r="${ri+1}">`;
+            row.forEach((c, ci) => {
+                if (c === null || c === undefined || c === '') return;
+                const ref = colName(ci) + (ri + 1);
+                if (typeof c === 'object') {
+                    const st = c.s ? ` s="${c.s}"` : '';
+                    if (typeof c.v === 'number') x += `<c r="${ref}"${st}><v>${c.v}</v></c>`;
+                    else x += `<c r="${ref}" t="inlineStr"${st}><is><t xml:space="preserve">${escX(c.v)}</t></is></c>`;
+                } else if (typeof c === 'number') x += `<c r="${ref}"><v>${c}</v></c>`;
+                else x += `<c r="${ref}" t="inlineStr"><is><t xml:space="preserve">${escX(c)}</t></is></c>`;
+            });
+            x += '</row>';
+        });
+        return x + '</sheetData></worksheet>';
+    }
+    const ESTILOS = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+<fonts count="3"><font><sz val="11"/><color rgb="FF0F172A"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FF0F172A"/><name val="Calibri"/></font></fonts>
+<fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1E1B4B"/><bgColor indexed="64"/></patternFill></fill></fills>
+<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>
+<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
+<cellXfs count="4"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment horizontal="center" vertical="center"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment horizontal="center"/></xf><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment horizontal="center"/></xf></cellXfs>
+<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+    function build(sheets){
+        const enc = new TextEncoder();
+        const files = [];
+        let ct = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>';
+        let wbSheets = '', wbRels = '';
+        sheets.forEach((sh, i) => {
+            ct += `<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`;
+            wbSheets += `<sheet name="${escX(sh.name)}" sheetId="${i+1}" r:id="rId${i+1}"/>`;
+            wbRels += `<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`;
+            files.push({ name: `xl/worksheets/sheet${i+1}.xml`, data: enc.encode(sheetXml(sh.rows, sh.cols)) });
+        });
+        ct += '</Types>';
+        const n = sheets.length;
+        wbRels += `<Relationship Id="rId${n+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>`;
+        files.push({ name: '[Content_Types].xml', data: enc.encode(ct) });
+        files.push({ name: '_rels/.rels', data: enc.encode(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`) });
+        files.push({ name: 'xl/workbook.xml', data: enc.encode(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${wbSheets}</sheets></workbook>`) });
+        files.push({ name: 'xl/_rels/workbook.xml.rels', data: enc.encode(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${wbRels}</Relationships>`) });
+        files.push({ name: 'xl/styles.xml', data: enc.encode(ESTILOS) });
+        return zipStore(files);
+    }
+    return { build };
+})();
+
+function construirExcel(){
+    const hojas = [];
+    const res = [];
+    res.push([{ v: 'TORNEO COPA NAVIDAD - CLUB MIRADOR', s: 1 }]);
+    res.push([{ v: 'Bolas Criollas - Reporte de Posiciones', s: 2 }]);
+    res.push([{ v: 'Generado: ' + new Date().toLocaleString('es-ES'), s: 2 }]);
+    res.push([]);
+    for (const k in categoryNames) {
+        const st = calculateStandings(k);
+        if (st.length === 0) continue;
+        res.push([{ v: 'CATEGORIA ' + categoryNames[k].toUpperCase(), s: 1 }]);
+        res.push(['POS','EQUIPO','J','G','P','E','TF','TC','AVG','JD'].map(h => ({ v: h, s: 1 })));
+        st.forEach((t, i) => res.push([
+            { v: i + 1, s: 2 }, { v: t.name }, { v: t.j, s: 2 }, { v: t.g, s: 2 }, { v: t.p, s: 2 },
+            { v: t.e, s: 2 }, { v: t.tf, s: 2 }, { v: t.tc, s: 2 }, { v: formatoAVG(t.avg), s: 3 }, { v: formatoJD(t.jd), s: 3 }
+        ]));
+        res.push([]);
+    }
+    hojas.push({ name: 'Resumen', rows: res, cols: [6, 30, 6, 6, 6, 6, 8, 8, 8, 8] });
+    const eqR = [[{ v: 'Categoria', s: 1 }, { v: 'Equipo', s: 1 }]];
+    for (const k in categoryNames) (categoriesData[k].teams || []).forEach(t => eqR.push([{ v: categoryNames[k], s: 2 }, { v: t }]));
+    hojas.push({ name: 'Equipos', rows: eqR, cols: [16, 34] });
+    const pR = [[{ v: 'Categoria', s: 1 }, { v: 'Fecha', s: 1 }, { v: 'Hora', s: 1 }, { v: 'Equipo1', s: 1 }, { v: 'Tantos1', s: 1 }, { v: 'Tantos2', s: 1 }, { v: 'Equipo2', s: 1 }, { v: 'Ganador', s: 1 }]];
+    for (const k in categoryNames) (categoriesData[k].matches || []).forEach(m => {
+        const gan = m.s1 > m.s2 ? m.t1 : (m.s2 > m.s1 ? m.t2 : 'Empate');
+        pR.push([{ v: categoryNames[k], s: 2 }, { v: m.date, s: 2 }, { v: m.time || '', s: 2 }, { v: m.t1 }, { v: m.s1, s: 3 }, { v: m.s2, s: 3 }, { v: m.t2 }, { v: gan }]);
+    });
+    hojas.push({ name: 'Partidos', rows: pR, cols: [14, 12, 9, 26, 9, 9, 26, 26] });
+    return XLSX.build(hojas);
+}
+
+/* ---------- Lector XLSX (para Importar) ---------- */
+async function parsearXlsx(bytes){
+    const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    let eocd = -1;
+    for (let i = bytes.length - 22; i >= 0; i--) { if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; } }
+    if (eocd < 0) throw new Error('El archivo no es un Excel (.xlsx) valido.');
+    const total = dv.getUint16(eocd + 10, true);
+    let p = dv.getUint32(eocd + 16, true);
+    const entradas = {};
+    for (let i = 0; i < total; i++) {
+        if (dv.getUint32(p, true) !== 0x02014b50) break;
+        const metodo = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true);
+        const nlen = dv.getUint16(p + 28, true), elen = dv.getUint16(p + 30, true), clen = dv.getUint16(p + 32, true);
+        const lho = dv.getUint32(p + 42, true);
+        const nombre = new TextDecoder().decode(bytes.subarray(p + 46, p + 46 + nlen));
+        const lnlen = dv.getUint16(lho + 26, true), lelen = dv.getUint16(lho + 28, true);
+        const ini = lho + 30 + lnlen + lelen;
+        entradas[nombre] = { metodo, raw: bytes.subarray(ini, ini + csize) };
+        p += 46 + nlen + elen + clen;
+    }
+    const inflar = async (e) => {
+        if (e.metodo === 0) return e.raw;
+        if (typeof DecompressionStream === 'undefined') throw new Error('Navegador sin soporte de descompresion. Usa Chrome/Edge actualizado.');
+        const st = new Blob([e.raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+        return new Uint8Array(await new Response(st).arrayBuffer());
+    };
+    const texto = async (n) => { const e = entradas[n]; if (!e) return null; return new TextDecoder().decode(await inflar(e)); };
+    const parser = new DOMParser();
+    const compartidos = [];
+    const ssX = await texto('xl/sharedStrings.xml');
+    if (ssX) parser.parseFromString(ssX, 'application/xml').querySelectorAll('si').forEach(si => compartidos.push(si.textContent || ''));
+    const rels = {};
+    const relX = await texto('xl/_rels/workbook.xml.rels');
+    if (relX) parser.parseFromString(relX, 'application/xml').querySelectorAll('Relationship').forEach(r => rels[r.getAttribute('Id')] = r.getAttribute('Target'));
+    const wbX = await texto('xl/workbook.xml');
+    if (!wbX) throw new Error('Excel sin datos.');
+    const hojas = {};
+    parser.parseFromString(wbX, 'application/xml').querySelectorAll('sheet').forEach(s => {
+        let t = rels[s.getAttribute('r:id')] || '';
+        t = t.replace(/^\/?xl\//, '').replace(/^\//, '');
+        hojas[s.getAttribute('name')] = 'xl/' + t;
+    });
+    async function leerHoja(nombre){
+        const x = await texto(hojas[nombre]);
+        if (!x) return [];
+        const filas = [];
+        parser.parseFromString(x, 'application/xml').querySelectorAll('row').forEach(row => {
+            const celdas = {};
+            row.querySelectorAll('c').forEach(c => {
+                const letras = (c.getAttribute('r') || '').replace(/[0-9]/g, '');
+                let col = 0; for (const ch of letras) col = col * 26 + (ch.charCodeAt(0) - 64); col--;
+                const t = c.getAttribute('t');
+                let val = '';
+                if (t === 'inlineStr') { const tn = c.querySelector('t'); val = tn ? tn.textContent : ''; }
+                else { const v = c.querySelector('v'); val = v ? v.textContent : ''; if (t === 's') val = compartidos[parseInt(val)] || ''; }
+                if (!t && val !== '' && !isNaN(val)) celdas[col] = parseFloat(val);
+                else celdas[col] = val;
+            });
+            filas.push(celdas);
+        });
+        return filas;
+    }
+    return { leerHoja, nombres: Object.keys(hojas) };
+}
+function normalizarFecha(v){
+    if (v === null || v === undefined || v === '') return new Date().toISOString().split('T')[0];
+    if (typeof v === 'number' && isFinite(v)) { const d = new Date(Date.UTC(1899, 11, 30) + Math.round(v) * 86400000); return d.toISOString().slice(0, 10); }
+    const s = String(v).trim();
+    if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+    const m = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+    if (m) return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
+    const d = new Date(s);
+    return isNaN(d) ? new Date().toISOString().split('T')[0] : d.toISOString().slice(0, 10);
+}
+function normalizarHora(v){
+    if (v === null || v === undefined || v === '') return '';
+    if (typeof v === 'number' && isFinite(v) && v > 0 && v < 1) { const mins = Math.round(v * 24 * 60); return String(Math.floor(mins / 60)).padStart(2, '0') + ':' + String(mins % 60).padStart(2, '0'); }
+    return String(v);
+}
+async function importarDesdeXlsxBytes(bytes){
+    const doc = await parsearXlsx(bytes);
+    const nombreHoja = (nom) => doc.nombres.find(n => n.toLowerCase() === nom.toLowerCase());
+    if (!nombreHoja('Partidos')) throw new Error('No se encontro la hoja "Partidos". Usa un archivo exportado por esta app.');
+    const data = {}; for (const k in categoryNames) data[k] = { teams: [], matches: [] };
+    let nP = 0;
+    const filasP = await doc.leerHoja(nombreHoja('Partidos'));
+    const cab = filasP[0] || {};
+    const idx = (nom) => { for (const c in cab) if (String(cab[c]).trim().toLowerCase() === nom) return +c; return -1; };
+    const cCat = idx('categoria'), cF = idx('fecha'), cH = idx('hora'), cT1 = idx('equipo1'), cS1 = idx('tantos1'), cS2 = idx('tantos2'), cT2 = idx('equipo2');
+    if (cT1 < 0 || cT2 < 0) throw new Error('Formato de hoja "Partidos" no reconocido.');
+    for (let i = 1; i < filasP.length; i++) {
+        const f = filasP[i];
+        const catVal = String(f[cCat] || '').trim().toLowerCase();
+        const clave = Object.keys(categoryNames).find(k => k === catVal || categoryNames[k].toLowerCase() === catVal);
+        if (!clave) continue;
+        const t1 = String(f[cT1] || '').trim(), t2 = String(f[cT2] || '').trim();
+        if (!t1 || !t2) continue;
+        data[clave].matches.push({ id: 'm_imp_' + i + '_' + Date.now(), t1, t2, s1: parseInt(f[cS1]) || 0, s2: parseInt(f[cS2]) || 0, date: normalizarFecha(f[cF]), time: normalizarHora(f[cH]) });
+        if (!data[clave].teams.includes(t1)) data[clave].teams.push(t1);
+        if (!data[clave].teams.includes(t2)) data[clave].teams.push(t2);
+        nP++;
+    }
+    if (nombreHoja('Equipos')) {
+        const filasE = await doc.leerHoja(nombreHoja('Equipos'));
+        const cabE = filasE[0] || {};
+        const iC = Object.keys(cabE).find(c => String(cabE[c]).trim().toLowerCase() === 'categoria');
+        const iE = Object.keys(cabE).find(c => String(cabE[c]).trim().toLowerCase() === 'equipo');
+        if (iC !== undefined && iE !== undefined) {
+            for (let i = 1; i < filasE.length; i++) {
+                const catVal = String(filasE[i][iC] || '').trim().toLowerCase();
+                const clave = Object.keys(categoryNames).find(k => k === catVal || categoryNames[k].toLowerCase() === catVal);
+                const eq = String(filasE[i][iE] || '').trim();
+                if (clave && eq && !data[clave].teams.includes(eq)) data[clave].teams.push(eq);
+            }
+        }
+    }
+    const nE = Object.values(data).reduce((s, c) => s + c.teams.length, 0);
+    return { data, nP, nE };
+}
+
+/* ---------- Exportar / Importar Excel ---------- */
+function fechaArchivo(){ return new Date().toISOString().slice(0, 10); }
+async function descargarArchivo(datos, nombre, mime){
+    const blob = datos instanceof Blob ? datos : new Blob([datos], { type: mime });
+    const esAndroid = /android/i.test(navigator.userAgent);
+    if (esAndroid && navigator.canShare) {
+        try {
+            const file = new File([blob], nombre, { type: mime || 'application/octet-stream' });
+            if (navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: nombre }); return; }
+        } catch (e) { if (e && e.name === 'AbortError') return; }
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = nombre;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+function downloadCanvasPNG(canvas, filename){
+    canvas.toBlob((blob) => { if (blob) descargarArchivo(blob, filename, 'image/png'); }, 'image/png');
+}
+async function exportarExcel(){
+    const hay = Object.values(categoriesData).some(c => (c.matches || []).length || (c.teams || []).length);
+    if (!hay) { showToast('No hay datos para exportar.', 'warning'); return; }
+    const bytes = construirExcel();
+    const nombre = `BaseDatos_CopaNavidad_${fechaArchivo()}.xlsx`;
+    if (window.electronAPI && window.electronAPI.guardarExcel) {
+        const r = await window.electronAPI.guardarExcel(bytes, nombre);
+        if (r && r.ok) showToast('¡Base de datos exportada a Excel! También se actualizó la base interna del programa.', 'success');
+    } else {
+        descargarArchivo(bytes, nombre, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        showToast('¡Excel descargado! Este archivo recrea toda la información en cualquier instalación.', 'success');
+    }
+}
+function dispararImportarExcel(){
+    if (window.electronAPI && window.electronAPI.abrirExcel) {
+        window.electronAPI.abrirExcel().then(async r => { if (r && r.ok && r.bytes) await procesarImportacion(r.bytes); });
+    } else document.getElementById('excel-file-input').click();
+}
+async function onExcelFile(e){
+    const f = e.target.files[0];
+    e.target.value = '';
+    if (!f) return;
+    await procesarImportacion(new Uint8Array(await f.arrayBuffer()));
+}
+async function procesarImportacion(bytes){
+    let res;
+    try { res = await importarDesdeXlsxBytes(bytes); }
+    catch (err) { showToast('Error al importar: ' + err.message, 'danger'); return; }
+    if (res.nP === 0 && res.nE === 0) { showToast('El archivo no contiene datos reconocibles.', 'warning'); return; }
+    pendingImport = res;
+    document.getElementById('import-resumen').textContent = `El archivo contiene ${res.nE} equipos y ${res.nP} partidos. Se reemplazará TODA la información actual con la del archivo Excel.`;
+    document.getElementById('import-modal').classList.add('active');
+}
+function ejecutarImportacion(){
+    if (!pendingImport) return;
+    categoriesData = pendingImport.data;
+    saveDataToLocal(); closeModal('import-modal'); updateUI();
+    showToast('¡Información recreada desde Excel con éxito!', 'success');
+    pendingImport = null;
+}
+
+/* ---------- Integración Electron (auto-guardado / auto-carga con Excel) ---------- */
+let autoSaveTimer = null;
+function programarAutoGuardadoExcel(){
+    if (!(window.electronAPI && window.electronAPI.autoGuardar)) return;
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => { try { window.electronAPI.autoGuardar(construirExcel()); } catch (e) {} }, 1200);
+}
+async function autoCargarElectron(){
+    if (!(window.electronAPI && window.electronAPI.autoCargar)) return;
+    const vacio = !localStorage.getItem(STORAGE_KEY);
+    if (!vacio) return;
+    try {
+        const r = await window.electronAPI.autoCargar();
+        if (r && r.ok && r.bytes) {
+            const res = await importarDesdeXlsxBytes(r.bytes);
+            if (res.nP > 0 || res.nE > 0) {
+                categoriesData = res.data;
+                saveDataToLocal(); updateUI();
+                showToast(`Base de datos recreada desde Excel: ${res.nE} equipos y ${res.nP} partidos.`, 'success');
+            }
+        }
+    } catch (e) {}
+}
+
+/* ============================================================
+   MOTOR PDF (100% propio, sin librerías, sin internet)
+   ============================================================ */
+const PDFGen = (() => {
+    const A4W = 595.28, A4H = 841.89;
+    function latin1(str){
+        const s = String(str); let out = '';
+        for (let i = 0; i < s.length; i++) {
+            const c = s.charCodeAt(i);
+            out += c <= 255 ? s[i] : (c === 0x2018 || c === 0x2019 ? "'" : (c === 0x201C || c === 0x201D ? '"' : (c === 0x2013 || c === 0x2014 ? '-' : '?')));
+        }
+        return out;
+    }
+    const esc = s => latin1(s).replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+    class Doc {
+        constructor(){ this.w = A4W; this.h = A4H; this.paginas = []; this.pagina(); }
+        pagina(){ this.actual = { ops: [] }; this.paginas.push(this.actual); return this.actual; }
+        texto(x, y, str, tam, o = {}){
+            const f = o.negrita ? '/F2' : (o.italica ? '/F3' : '/F1');
+            const c = o.color || [0.06, 0.09, 0.16];
+            this.actual.ops.push(`BT ${f} ${tam} Tf ${c[0]} ${c[1]} ${c[2]} rg 1 0 0 1 ${x.toFixed(2)} ${y.toFixed(2)} Tm (${esc(str)}) Tj ET`);
+        }
+        anchoTexto(str, tam, o = {}){ return latin1(String(str)).length * tam * (o.negrita ? 0.55 : 0.5); }
+        textoDer(x, y, str, tam, o){ this.texto(x - this.anchoTexto(str, tam, o), y, str, tam, o); }
+        textoCentro(cx, y, str, tam, o){ this.texto(cx - this.anchoTexto(str, tam, o) / 2, y, str, tam, o); }
+        rect(x, y, w, h, color, relleno = true){ this.actual.ops.push(`${color[0]} ${color[1]} ${color[2]} ${relleno ? 'rg' : 'RG'} ${x.toFixed(2)} ${y.toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)} re ${relleno ? 'f' : 'S'}`); }
+        linea(x1, y1, x2, y2, color = [0.88, 0.9, 0.93], lw = 0.8){ this.actual.ops.push(`${color[0]} ${color[1]} ${color[2]} RG ${lw} w ${x1.toFixed(2)} ${y1.toFixed(2)} m ${x2.toFixed(2)} ${y2.toFixed(2)} l S`); }
+        construir(titulo){
+            const n = this.paginas.length, cuerpos = {};
+            cuerpos[1] = '<< /Type /Catalog /Pages 2 0 R >>';
+            cuerpos[2] = `<< /Type /Pages /Kids [${this.paginas.map((_, i) => `${7 + 2 * i} 0 R`).join(' ')}] /Count ${n} >>`;
+            cuerpos[3] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
+            cuerpos[4] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
+            cuerpos[5] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>';
+            cuerpos[6] = `<< /Title (${esc(titulo)}) /Author (Club Mirador) /Creator (Gestor Copa Navidad - 100% Offline) >>`;
+            this.paginas.forEach((pg, i) => {
+                const contenido = pg.ops.join('\n');
+                cuerpos[7 + 2 * i] = `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${this.w} ${this.h}] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents ${8 + 2 * i} 0 R >>`;
+                cuerpos[8 + 2 * i] = `<< /Length ${contenido.length} >>\nstream\n${contenido}\nendstream`;
+            });
+            const total = 7 + 2 * n;
+            let out = '%PDF-1.4\n';
+            const offsets = [];
+            for (let i = 1; i < total; i++) { offsets[i] = out.length; out += `${i} 0 obj\n${cuerpos[i]}\nendobj\n`; }
+            const xref = out.length;
+            out += `xref\n0 ${total}\n0000000000 65535 f \n`;
+            for (let i = 1; i < total; i++) out += String(offsets[i]).padStart(10, '0') + ' 00000 n \n';
+            out += `trailer\n<< /Size ${total} /Root 1 0 R /Info 6 0 R >>\nstartxref\n${xref}\n%%EOF`;
+            const bytes = new Uint8Array(out.length);
+            for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 0xFF;
+            return bytes;
+        }
+    }
+    function pies(doc){
+        doc.paginas.forEach((pg, i) => {
+            pg.ops.push(`BT /F1 7.5 Tf 0.42 0.45 0.55 rg 1 0 0 1 36 22 Tm (Gestor de Torneo Copa Navidad - Club Mirador) Tj ET`);
+            const t = `Pagina ${i + 1} de ${doc.paginas.length}`;
+            pg.ops.push(`BT /F1 7.5 Tf 0.42 0.45 0.55 rg 1 0 0 1 ${(559 - t.length * 3.6).toFixed(1)} 22 Tm (${t}) Tj ET`);
+        });
+    }
+    return { Doc, pies, A4W, A4H };
+})();
+
+function cabeceraPDF(doc, subtitulo){
+    doc.rect(0, doc.h - 96, doc.w, 96, [0.118, 0.106, 0.294]);
+    doc.textoCentro(doc.w / 2, doc.h - 40, 'TORNEO COPA NAVIDAD - CLUB MIRADOR', 16, { negrita: true, color: [1, 1, 1] });
+    doc.textoCentro(doc.w / 2, doc.h - 60, 'BOLAS CRIOLLAS • VENEZUELA', 10, { negrita: true, color: [0.961, 0.62, 0.043] });
+    doc.textoCentro(doc.w / 2, doc.h - 80, subtitulo, 9, { color: [0.75, 0.8, 0.9] });
+    doc.rect(0, doc.h - 100, doc.w / 3, 4, [1, 0.8, 0]);
+    doc.rect(doc.w / 3, doc.h - 100, doc.w / 3, 4, [0, 0.145, 0.49]);
+    doc.rect(2 * doc.w / 3, doc.h - 100, doc.w / 3, 4, [0.812, 0.078, 0.169]);
+}
+function dibujarTablaPosicionesPDF(doc, st, y){
+    const cols = [['POS', 36], ['EQUIPO', 66], ['J', 296], ['G', 324], ['P', 350], ['E', 376], ['TF', 406], ['TC', 436], ['AVG', 470], ['JD', 530]];
+    const filaH = 19;
+    const cabecera = (yy) => {
+        doc.rect(30, yy - filaH, 536, filaH, [0.118, 0.106, 0.294]);
+        cols.forEach(c => {
+            if (c[0] === 'EQUIPO') doc.texto(c[1], yy - 13, c[0], 8.5, { negrita: true, color: [1, 1, 1] });
+            else doc.textoCentro(c[1], yy - 13, c[0], 8.5, { negrita: true, color: [1, 1, 1] });
+        });
+        return yy - filaH;
+    };
+    y = cabecera(y);
+    st.forEach((t, i) => {
+        if (y - filaH < 60) { doc.pagina(); y = cabecera(doc.h - 60); }
+        if (i % 2 === 1) doc.rect(30, y - filaH, 536, filaH, [0.965, 0.973, 0.99]);
+        doc.linea(30, y - filaH, 566, y - filaH);
+        doc.textoCentro(36, y - 13, String(i + 1), 9, { negrita: true, color: i === 0 ? [0.961, 0.62, 0.043] : [0.118, 0.106, 0.294] });
+        doc.texto(66, y - 13, t.name, 9, { negrita: i < 3 });
+        doc.textoCentro(296, y - 13, String(t.j), 9);
+        doc.textoCentro(324, y - 13, String(t.g), 9, { negrita: true, color: [0.024, 0.59, 0.41] });
+        doc.textoCentro(350, y - 13, String(t.p), 9, { negrita: true, color: [0.86, 0.15, 0.15] });
+        doc.textoCentro(376, y - 13, String(t.e), 9);
+        doc.textoCentro(406, y - 13, String(t.tf), 9, { color: [0.39, 0.44, 0.52] });
+        doc.textoCentro(436, y - 13, String(t.tc), 9, { color: [0.39, 0.44, 0.52] });
+        doc.textoCentro(470, y - 13, formatoAVG(t.avg), 9, { negrita: true });
+        doc.textoCentro(530, y - 13, formatoJD(t.jd), 9, { color: [0.012, 0.522, 0.804] });
+        y -= filaH;
+    });
+    return y;
+}
+function exportarPDFPosiciones(){
+    const st = calculateStandings(currentCategory);
+    if (st.length === 0) { showToast('No hay equipos para exportar.', 'warning'); return; }
+    const doc = new PDFGen.Doc();
+    cabeceraPDF(doc, 'TABLA DE POSICIONES • CATEGORIA ' + categoryNames[currentCategory].toUpperCase());
+    const y = dibujarTablaPosicionesPDF(doc, st, doc.h - 140);
+    doc.texto(36, y - 14, '* Ordenado por AVG (promedio de victorias) y Juegos de Diferencia (JD).', 7.5, { italica: true, color: [0.5, 0.54, 0.6] });
+    PDFGen.pies(doc);
+    descargarArchivo(doc.construir('Tabla de Posiciones ' + categoryNames[currentCategory]), `Posiciones_${categoryNames[currentCategory].replace(/\s+/g, '_')}_${fechaArchivo()}.pdf`, 'application/pdf');
+    showToast('Tabla de posiciones exportada en PDF.', 'success');
+}
+function exportarPDFInforme(){
+    let hay = false;
+    for (const k in categoryNames) if ((categoriesData[k].teams || []).length || (categoriesData[k].matches || []).length) { hay = true; break; }
+    if (!hay) { showToast('No hay datos para el informe.', 'warning'); return; }
+    const doc = new PDFGen.Doc(), W = doc.w, M = 36;
+    doc.rect(0, doc.h - 150, W, 150, [0.118, 0.106, 0.294]);
+    doc.textoCentro(W / 2, doc.h - 52, 'TORNEO COPA NAVIDAD', 22, { negrita: true, color: [1, 1, 1] });
+    doc.textoCentro(W / 2, doc.h - 76, 'CLUB MIRADOR • BOLAS CRIOLLAS DE VENEZUELA', 11, { negrita: true, color: [0.961, 0.62, 0.043] });
+    doc.textoCentro(W / 2, doc.h - 98, 'INFORME GENERAL DEL TORNEO', 10, { color: [0.75, 0.8, 0.9] });
+    doc.textoCentro(W / 2, doc.h - 122, 'Generado: ' + new Date().toLocaleString('es-ES'), 8.5, { color: [0.6, 0.65, 0.78] });
+    doc.rect(0, doc.h - 154, W / 3, 4, [1, 0.8, 0]);
+    doc.rect(W / 3, doc.h - 154, W / 3, 4, [0, 0.145, 0.49]);
+    doc.rect(2 * W / 3, doc.h - 154, W / 3, 4, [0.812, 0.078, 0.169]);
+    let tE = 0, tP = 0, tT = 0, act = 0;
+    for (const k in categoryNames) {
+        tE += calculateStandings(k).length;
+        tP += (categoriesData[k].matches || []).length;
+        tT += (categoriesData[k].matches || []).reduce((s, m) => s + (+m.s1 || 0) + (+m.s2 || 0), 0);
+        if ((categoriesData[k].matches || []).length) act++;
+    }
+    const tarjetas = [[String(tE), 'EQUIPOS'], [String(tP), 'PARTIDOS'], [act + ' / 5', 'CATEGORIAS'], [String(tT), 'TANTOS']];
+    const cw = (W - 2 * M - 30) / 4;
+    tarjetas.forEach((t, i) => {
+        const x = M + i * (cw + 10);
+        doc.rect(x, doc.h - 230, cw, 54, [0.965, 0.973, 0.99]);
+        doc.rect(x, doc.h - 230, cw, 3, [0.012, 0.522, 0.804]);
+        doc.textoCentro(x + cw / 2, doc.h - 200, t[0], 17, { negrita: true, color: [0.118, 0.106, 0.294] });
+        doc.textoCentro(x + cw / 2, doc.h - 218, t[1], 7.5, { color: [0.39, 0.44, 0.52] });
+    });
+    let y = doc.h - 265;
+    for (const k in categoryNames) {
+        const st = calculateStandings(k);
+        const ms = categoriesData[k].matches || [];
+        if (st.length === 0 && ms.length === 0) continue;
+        if (y < 200) { doc.pagina(); doc.texto(M, doc.h - 56, 'TORNEO COPA NAVIDAD - CLUB MIRADOR (continuacion)', 9, { negrita: true, color: [0.118, 0.106, 0.294] }); y = doc.h - 84; }
+        doc.rect(M, y - 16, 200, 20, [0.118, 0.106, 0.294]);
+        doc.textoCentro(M + 100, y - 3, categoryNames[k].toUpperCase(), 9, { negrita: true, color: [1, 1, 1] });
+        y -= 34;
+        if (st.length) { y = dibujarTablaPosicionesPDF(doc, st, y); y -= 12; }
+        if (ms.length) {
+            doc.texto(M, y, 'Resultados registrados (' + ms.length + '):', 9, { negrita: true, color: [0.39, 0.44, 0.52] });
+            y -= 15;
+            const ord = [...ms].sort((a, b) => (a.date + (a.time || '')).localeCompare(b.date + (b.time || '')));
+            ord.forEach(m => {
+                if (y < 70) { doc.pagina(); y = doc.h - 60; }
+                const g1 = m.s1 > m.s2, g2 = m.s2 > m.s1;
+                doc.texto(M, y, formatDateSpanish(m.date), 8, { color: [0.55, 0.59, 0.66] });
+                doc.texto(M + 90, y, m.t1, 8, { negrita: g1, color: g1 ? [0.02, 0.42, 0.29] : [0.2, 0.24, 0.3] });
+                doc.textoDer(M + 330, y, String(m.s1), 9, { negrita: true, color: g1 ? [0.02, 0.42, 0.29] : [0.3, 0.34, 0.4] });
+                doc.texto(M + 344, y, '-', 9, { color: [0.6, 0.64, 0.7] });
+                doc.texto(M + 360, y, String(m.s2), 9, { negrita: true, color: g2 ? [0.02, 0.42, 0.29] : [0.3, 0.34, 0.4] });
+                doc.texto(M + 385, y, m.t2, 8, { negrita: g2, color: g2 ? [0.02, 0.42, 0.29] : [0.2, 0.24, 0.3] });
+                if (m.time) doc.textoDer(559, y, m.time, 7.5, { color: [0.55, 0.59, 0.66] });
+                y -= 13;
+            });
+            y -= 10;
+        }
+    }
+    PDFGen.pies(doc);
+    descargarArchivo(doc.construir('Informe General del Torneo - Copa Navidad'), `Informe_Torneo_CopaNavidad_${fechaArchivo()}.pdf`, 'application/pdf');
+    showToast('Informe PDF completo del torneo generado.', 'success');
+}
+
+/* ---------- Exportaciones PNG (originales, conservadas) ---------- */
+function exportStandingsPNG(){
+    const standings = calculateStandings(currentCategory);
+    if (standings.length === 0) { showToast("No hay equipos para exportar.", "warning"); return; }
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = 900, headerHeight = 130, rowHeight = 38, tableHeaderHeight = 40, footerHeight = 50;
+    const totalHeight = headerHeight + tableHeaderHeight + (standings.length * rowHeight) + footerHeight;
+    canvas.width = width; canvas.height = totalHeight;
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, width, totalHeight);
+    ctx.fillStyle = '#1e1b4b'; ctx.fillRect(0, 0, width, headerHeight);
+    ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px system-ui, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('TORNEO COPA NAVIDAD - CLUB MIRADOR', width / 2, 42);
+    ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 15px system-ui, sans-serif';
+    ctx.fillText('TABLA DE POSICIONES OFICIAL • BOLAS CRIOLLAS', width / 2, 70);
+    const todayStr = new Date().toLocaleDateString('es-ES');
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '13px system-ui, sans-serif';
+    ctx.fillText(`Categoría: ${categoryNames[currentCategory].toUpperCase()} | Emisión: ${todayStr}`, width / 2, 98);
+    let currentY = headerHeight;
+    ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, currentY, width, tableHeaderHeight);
+    ctx.fillStyle = '#1e1b4b'; ctx.font = 'bold 13px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('POS', 45, currentY + 25);
+    ctx.textAlign = 'left'; ctx.fillText('EQUIPO', 95, currentY + 25);
+    ctx.textAlign = 'center';
+    ctx.fillText('J', 480, currentY + 25); ctx.fillText('G', 540, currentY + 25); ctx.fillText('P', 600, currentY + 25);
+    ctx.fillText('E', 660, currentY + 25); ctx.fillText('AVG', 740, currentY + 25); ctx.fillText('JD', 830, currentY + 25);
+    currentY += tableHeaderHeight;
+    standings.forEach((t, idx) => {
+        if (idx % 2 === 1) { ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, currentY, width, rowHeight); }
+        ctx.strokeStyle = '#f1f5f9'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(0, currentY + rowHeight); ctx.lineTo(width, currentY + rowHeight); ctx.stroke();
+        ctx.font = 'bold 13px system-ui, sans-serif'; ctx.fillStyle = '#1e1b4b'; ctx.textAlign = 'center';
+        ctx.fillText((idx + 1).toString(), 45, currentY + 24);
+        ctx.textAlign = 'left'; ctx.fillText(t.name, 95, currentY + 24);
+        ctx.font = '13px system-ui, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(t.j.toString(), 480, currentY + 24);
+        ctx.fillStyle = '#059669'; ctx.font = 'bold 13px system-ui, sans-serif';
+        ctx.fillText(t.g.toString(), 540, currentY + 24);
+        ctx.fillStyle = '#dc2626'; ctx.fillText(t.p.toString(), 600, currentY + 24);
+        ctx.fillStyle = '#475569'; ctx.font = '13px system-ui, sans-serif';
+        ctx.fillText(t.e.toString(), 660, currentY + 24);
+        ctx.fillStyle = '#0f172a'; ctx.font = 'bold 13px system-ui, sans-serif';
+        ctx.fillText(formatoAVG(t.avg), 740, currentY + 24);
+        ctx.fillStyle = '#0284c7'; ctx.fillText(formatoJD(t.jd), 830, currentY + 24);
+        currentY += rowHeight;
+    });
+    ctx.fillStyle = '#64748b'; ctx.font = '11px system-ui, sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Gestor de Torneo • Club Mirador', 20, totalHeight - 20);
+    ctx.textAlign = 'right'; ctx.fillText('Documento Oficial Generado Offline', width - 20, totalHeight - 20);
+    downloadCanvasPNG(canvas, `Tabla_Posiciones_${categoryNames[currentCategory].replace(/\s+/g, '_')}_${todayStr.replace(/\//g, '-')}.png`);
+}
+function exportDailyResultsPNG(){
+    const dateFilter = document.getElementById('history-date-filter');
+    const selectedDate = dateFilter ? dateFilter.value : "ALL";
+    let matches = categoriesData[currentCategory].matches || [];
+    if (selectedDate !== "ALL") matches = matches.filter(m => m.date === selectedDate);
+    if (matches.length === 0) { showToast("No hay partidos para exportar.", "warning"); return; }
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = 920, headerHeight = 130, rowHeight = 40, tableHeaderHeight = 40, footerHeight = 50;
+    const totalHeight = headerHeight + tableHeaderHeight + (matches.length * rowHeight) + footerHeight;
+    canvas.width = width; canvas.height = totalHeight;
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, width, totalHeight);
+    ctx.fillStyle = '#1e1b4b'; ctx.fillRect(0, 0, width, headerHeight);
+    ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px system-ui, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('TORNEO COPA NAVIDAD - CLUB MIRADOR', width / 2, 42);
+    ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 15px system-ui, sans-serif';
+    ctx.fillText('RESULTADOS DE JUEGOS • BOLAS CRIOLLAS', width / 2, 70);
+    const filterText = selectedDate === "ALL" ? "TODAS LAS FECHAS REGISTRADAS" : `FECHA: ${formatDateSpanish(selectedDate).toUpperCase()}`;
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '13px system-ui, sans-serif';
+    ctx.fillText(`Categoría: ${categoryNames[currentCategory].toUpperCase()} | ${filterText}`, width / 2, 98);
+    let y = headerHeight;
+    ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, y, width, tableHeaderHeight);
+    ctx.fillStyle = '#1e1b4b'; ctx.font = 'bold 13px system-ui, sans-serif';
+    ctx.textAlign = 'left'; ctx.fillText('EQUIPO 1', 30, y + 25);
+    ctx.textAlign = 'center'; ctx.fillText('TANTOS', 470, y + 25); ctx.fillText('TANTOS', 590, y + 25);
+    ctx.textAlign = 'right'; ctx.fillText('EQUIPO 2', 890, y + 25);
+    y += tableHeaderHeight;
+    matches.forEach(m => {
+        const gano1 = m.s1 > m.s2, gano2 = m.s2 > m.s1;
+        ctx.textAlign = 'left'; ctx.font = gano1 ? 'bold 14px system-ui' : '14px system-ui';
+        ctx.fillStyle = gano1 ? '#1e1b4b' : '#334155';
+        ctx.fillText(m.t1, 30, y + 25);
+        ctx.textAlign = 'center'; ctx.font = 'bold 18px system-ui';
+        ctx.fillStyle = gano1 ? '#059669' : '#64748b'; ctx.fillText(String(m.s1), 470, y + 26);
+        ctx.fillStyle = gano2 ? '#059669' : '#64748b'; ctx.fillText(String(m.s2), 590, y + 26);
+        ctx.textAlign = 'right'; ctx.font = gano2 ? 'bold 14px system-ui' : '14px system-ui';
+        ctx.fillStyle = gano2 ? '#1e1b4b' : '#334155';
+        ctx.fillText(m.t2, 890, y + 25);
+        ctx.strokeStyle = '#e2e8f0'; ctx.beginPath(); ctx.moveTo(0, y + rowHeight); ctx.lineTo(width, y + rowHeight); ctx.stroke();
+        y += rowHeight;
+    });
+    ctx.fillStyle = '#64748b'; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+    ctx.fillText('Gestor de Torneo • Club Mirador', 20, totalHeight - 20);
+    ctx.textAlign = 'right'; ctx.fillText('Documento Oficial Generado Offline', width - 20, totalHeight - 20);
+    downloadCanvasPNG(canvas, `Resultados_${categoryNames[currentCategory].replace(/\s+/g, '_')}_${(selectedDate === 'ALL' ? 'Todo' : selectedDate)}.png`);
+}
+
+/* ---------- Utilidades ---------- */
+function escapeHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function formatDateSpanish(dateStr){
+    if (!dateStr) return 'Sin fecha';
+    const [y, m, d] = dateStr.split('-');
+    const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    return `${d}-${meses[parseInt(m) - 1] || '??'}-${y}`;
+}
+let toastTimer = null;
+function showToast(msg, tipo){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.backgroundColor = tipo === 'success' ? '#059669' : tipo === 'danger' ? '#dc2626' : tipo === 'warning' ? '#b45309' : '#1e1b4b';
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3400);
+}
+
+/* ---------- Inicio ---------- */
+loadDataFromLocal();
+document.getElementById('match-date-input').value = new Date().toISOString().split('T')[0];
+document.getElementById('excel-file-input').addEventListener('change', onExcelFile);
+updateUI();
+iniciarBanners();
+autoCargarElectron();
+</script>
+</body>
+</html>

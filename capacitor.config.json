@@ -1,0 +1,6 @@
+{
+  "appId": "com.clubmirador.copanavidad",
+  "appName": "Copa Navidad",
+  "webDir": "www",
+  "server": { "androidScheme": "https" }
+}

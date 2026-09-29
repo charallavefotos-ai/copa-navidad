@@ -1,0 +1,31 @@
+{
+  "name": "copa-navidad-club-mirador",
+  "productName": "Copa Navidad Club Mirador",
+  "version": "2.0.0",
+  "description": "Gestor de Torneos de Bolas Criollas - Copa Navidad Club Mirador (100% Offline, Excel y PDF)",
+  "main": "main.js",
+  "author": "Club Mirador",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.clubmirador.copanavidad",
+    "productName": "Copa Navidad Club Mirador",
+    "directories": { "output": "dist-instalador" },
+    "files": ["main.js", "preload.js", "index.html"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Copa Navidad Club Mirador"
+    }
+  }
+}
