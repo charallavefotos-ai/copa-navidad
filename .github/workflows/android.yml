@@ -1,0 +1,49 @@
+name: Generar APK Android
+on: [push, workflow_dispatch]
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v5
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Instalar Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Instalar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Preparar carpeta web
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+
+      - name: Instalar Capacitor sin descargar Electron
+        run: npm install --ignore-scripts @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+
+      - name: Crear proyecto Android
+        run: npx cap add android
+
+      - name: Sincronizar app
+        run: npx cap sync android
+
+      - name: Compilar APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Publicar APK
+        uses: actions/upload-artifact@v5
+        with:
+          name: CopaNavidad-APK-Android
+          path: android/app/build/outputs/apk/debug/app-debug.apk
